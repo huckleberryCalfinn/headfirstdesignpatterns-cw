@@ -3,6 +3,7 @@ package com.huckleberrycalfinn.mvc;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -54,6 +55,59 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
     this.viewFrame.getContentPane().add(this.viewPanel, BorderLayout.CENTER);
     this.viewFrame.pack();
     viewFrame.setVisible(true);
+  }
+
+  public void createControls(){
+    this.bpmTextField = new JTextField(2);
+    this.bpmLabel = new JLabel("Enter BPM:", SwingConstants.RIGHT);
+    JPanel bpmTextInputPanel = new JPanel(new GridLayout(1,2));
+    bpmTextInputPanel.add(this.bpmLabel);
+    bpmTextInputPanel.add(this.bpmTextField);
+
+    this.setBPMButton = new JButton("Set");
+
+    this.decreaseBPMButton = new JButton("<<");
+    this.increaseBPMButton = new JButton(">>");
+    JPanel buttonPanel = new JPanel(new GridLayout(1,2));
+    buttonPanel.add(decreaseBPMButton);
+    buttonPanel.add(increaseBPMButton);
+
+    JPanel innerControlPanel = new JPanel(new GridLayout(3,1));
+    innerControlPanel.add(bpmTextInputPanel);
+    innerControlPanel.add(this.setBPMButton);
+    innerControlPanel.add(buttonPanel);
+
+    this.controlPanel = new JPanel(new GridLayout(1, 2));
+    this.controlPanel.add(innerControlPanel);
+
+    this.menuBar = new JMenuBar();
+    this.menu = new JMenu("DJ Control");
+    this.startMenuItem = new JMenuItem("Start");
+    this.startMenuItem.addActionListener(event -> {
+      // this.controller.start();
+    });
+    this.stopMenuItem = new JMenuItem("Stop");
+    this.stopMenuItem.addActionListener(event -> {
+      // this.controller.stop();
+    });
+    this.stopMenuItem.addActionListener(this);
+    JMenuItem exit = new JMenuItem("Quit");
+    exit.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent event){
+        System.exit(0);
+      }
+    });
+    this.menu.add(startMenuItem);
+    this.menu.add(stopMenuItem);
+    this.menu.add(exit);
+    this.menuBar.add(menu);
+
+    this.controlFrame = new JFrame("Control");
+    this.controlFrame.setJMenuBar(this.menuBar);
+    this.controlFrame.getContentPane().add(this.controlPanel);
+    this.controlFrame.pack();
+    this.controlFrame.setVisible(true);
+
   }
 
   @Override

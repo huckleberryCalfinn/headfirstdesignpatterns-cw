@@ -7,6 +7,8 @@ public class BeatApp {
     beatModel.on();
     DJView djView = new DJView(beatModel);
     djView.createView();
+    djView.createControls();
+    djView.beatBar.setValue(100);
     beatModel.setBPM(120);
     try {
       Thread.sleep(5000);
