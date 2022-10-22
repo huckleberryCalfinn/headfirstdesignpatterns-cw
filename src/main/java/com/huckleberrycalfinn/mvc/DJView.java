@@ -65,9 +65,11 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
     bpmTextInputPanel.add(this.bpmTextField);
 
     this.setBPMButton = new JButton("Set");
-
+    this.setBPMButton.addActionListener(this);
     this.decreaseBPMButton = new JButton("<<");
+    this.decreaseBPMButton.addActionListener(this);
     this.increaseBPMButton = new JButton(">>");
+    this.increaseBPMButton.addActionListener(this);
     JPanel buttonPanel = new JPanel(new GridLayout(1,2));
     buttonPanel.add(decreaseBPMButton);
     buttonPanel.add(increaseBPMButton);
@@ -90,7 +92,6 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
     this.stopMenuItem.addActionListener(event -> {
       // this.controller.stop();
     });
-    this.stopMenuItem.addActionListener(this);
     JMenuItem exit = new JMenuItem("Quit");
     exit.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent event){
@@ -110,9 +111,27 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
 
   }
 
+  public void enableStopMenuItem() {
+    stopMenuItem.setEnabled(true);
+  }
+
+  public void disableStopMenuItem() {
+    stopMenuItem.setEnabled(false);
+  }
+
+  public void enableStartMenuItem() {
+    startMenuItem.setEnabled(true);
+  }
+
+  public void disableStartMenuItem() {
+    startMenuItem.setEnabled(false);
+  }
+
   @Override
   public void updateBeat() {
-    //update components to show beat occurred
+    if (this.beatBar != null){
+      this.beatBar.setValue(100);
+    }
   }
 
   @Override
@@ -128,15 +147,24 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
           this.bpmOutputLabel.setText("Current BPM: " + bpm);
         }
       }
-      //update components according to new bpm
     }
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    // add self to button components
-    // the buttons will then call this method
-    // when pressed.
-    // call e.getSource() to get the button object
+    if (e.getSource() == this.setBPMButton){
+      int bpm;
+      String bpmText = this.bpmTextField.getText();
+      if (bpmText == null || bpmText == ""){
+        bpm = 90;
+      } else {
+        bpm = Integer.parseInt(bpmText);
+      }
+      // this.controller.setBPM(bpm);
+    } else if (e.getSource() == this.increaseBPMButton){
+      // this.controller.increaseBPM();
+    } else if (e.getSource() == this.decreaseBPMButton){
+      // this.controller.decreaseBPM();
+    }
   }
 }
