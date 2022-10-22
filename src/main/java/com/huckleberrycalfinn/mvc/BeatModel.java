@@ -10,10 +10,10 @@ import javax.sound.sampled.Line;
 public class BeatModel implements BeatModelInterface, Runnable {
   private int bpm = 90;
   private Thread thread;
-  private boolean stop = false;
+  boolean stop = false;
   private Clip clip;
-  List<BeatObserver> beatObservers;
-  List<BPMUpdateObserver> bpmUpdateObservers;
+  private List<BeatObserver> beatObservers;
+  private List<BPMUpdateObserver> bpmUpdateObservers;
 
   public BeatModel(){
 	this.beatObservers = new ArrayList<BeatObserver>();
@@ -92,14 +92,14 @@ public class BeatModel implements BeatModelInterface, Runnable {
   @Override
   public void notifyBeatObservers() {
 	for (BeatObserver o : this.beatObservers){
-	  o.update(this);
+	  o.updateBeat();
 	}
   }
 
   @Override
   public void notifyBPMUpdateObservers() {
 	for (BPMUpdateObserver o : this.bpmUpdateObservers){
-	  o.update(this);
+	  o.updateBPM();
 	}
   }
 
