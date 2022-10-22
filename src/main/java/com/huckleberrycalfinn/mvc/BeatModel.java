@@ -34,6 +34,7 @@ public class BeatModel implements BeatModelInterface, Runnable {
   @Override
   public void on() {
   	this.bpm = 90;
+	this.notifyBPMUpdateObservers();
 	this.thread = new Thread(this);
 	this.stop = false;
 	this.thread.start();
@@ -54,6 +55,8 @@ public class BeatModel implements BeatModelInterface, Runnable {
 
   @Override
   public void off() {
+	this.bpm = 0;
+	this.notifyBPMUpdateObservers();
 	this.stopBeat();
 	this.stop = true;
   }

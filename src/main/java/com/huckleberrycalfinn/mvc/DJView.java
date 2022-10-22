@@ -17,7 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
-  private BeatModel beatModel;
+  private BeatModelInterface beatModel;
+  private BeatControllerInterface controller;
   JFrame viewFrame;
   JPanel viewPanel;
   BeatBar beatBar;
@@ -34,8 +35,9 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
   JMenuItem startMenuItem;
   JMenuItem stopMenuItem;
 
-  public DJView(BeatModel beatModel){
+  public DJView(BeatModelInterface beatModel, BeatControllerInterface controller){
     this.beatModel = beatModel;
+    this.controller = controller;
     this.beatModel.registerObserver((BeatObserver)this);
     this.beatModel.registerObserver((BPMUpdateObserver)this);
   }
@@ -86,11 +88,11 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
     this.menu = new JMenu("DJ Control");
     this.startMenuItem = new JMenuItem("Start");
     this.startMenuItem.addActionListener(event -> {
-      // this.controller.start();
+      this.controller.start();
     });
     this.stopMenuItem = new JMenuItem("Stop");
     this.stopMenuItem.addActionListener(event -> {
-      // this.controller.stop();
+      this.controller.stop();
     });
     JMenuItem exit = new JMenuItem("Quit");
     exit.addActionListener(new ActionListener(){
@@ -160,11 +162,11 @@ public class DJView implements ActionListener, BeatObserver, BPMUpdateObserver {
       } else {
         bpm = Integer.parseInt(bpmText);
       }
-      // this.controller.setBPM(bpm);
+      this.controller.setBPM(bpm);
     } else if (e.getSource() == this.increaseBPMButton){
-      // this.controller.increaseBPM();
+      this.controller.increaseBPM();
     } else if (e.getSource() == this.decreaseBPMButton){
-      // this.controller.decreaseBPM();
+      this.controller.decreaseBPM();
     }
   }
 }
