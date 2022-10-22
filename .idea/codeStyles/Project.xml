@@ -1,0 +1,65 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="true" />
+    <JavaCodeStyleSettings>
+      <option name="VISIBILITY" value="packageLocal" />
+      <option name="USE_EXTERNAL_ANNOTATIONS" value="true" />
+      <option name="REPLACE_INSTANCEOF_AND_CAST" value="true" />
+      <option name="DO_NOT_WRAP_AFTER_SINGLE_ANNOTATION" value="true" />
+      <option name="ANNOTATION_PARAMETER_WRAP" value="1" />
+      <option name="ALIGN_MULTILINE_ANNOTATION_PARAMETERS" value="true" />
+      <option name="ALIGN_MULTILINE_TEXT_BLOCKS" value="true" />
+      <option name="SPACE_BEFORE_COLON_IN_FOREACH" value="false" />
+      <option name="SPACE_INSIDE_ONE_LINE_ENUM_BRACES" value="true" />
+      <option name="LAYOUT_STATIC_IMPORTS_SEPARATELY" value="false" />
+      <option name="INSERT_INNER_CLASS_IMPORTS" value="true" />
+      <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="100" />
+      <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="100" />
+      <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
+        <value />
+      </option>
+      <option name="IMPORT_LAYOUT_TABLE">
+        <value>
+          <package name="" withSubpackages="true" static="false" />
+          <emptyLine />
+          <emptyLine />
+        </value>
+      </option>
+      <option name="NEW_LINE_AFTER_LPAREN_IN_RECORD_HEADER" value="true" />
+      <option name="RPAREN_ON_NEW_LINE_IN_RECORD_HEADER" value="true" />
+      <option name="JD_ALIGN_PARAM_COMMENTS" value="false" />
+      <option name="JD_ALIGN_EXCEPTION_COMMENTS" value="false" />
+      <option name="JD_PARAM_DESCRIPTION_ON_NEW_LINE" value="true" />
+      <option name="JD_INDENT_ON_CONTINUATION" value="true" />
+    </JavaCodeStyleSettings>
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
+    <ScalaCodeStyleSettings>
+      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+    </ScalaCodeStyleSettings>
+    <codeStyleSettings language="JAVA">
+      <option name="KEEP_BLANK_LINES_IN_CODE" value="0" />
+      <indentOptions>
+        <option name="INDENT_SIZE" value="2" />
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="USE_RELATIVE_INDENTS" value="true" />
+      </indentOptions>
+      <arrangement>
+        <groups>
+          <group>
+            <type>GETTERS_AND_SETTERS</type>
+            <order>KEEP</order>
+          </group>
+          <group>
+            <type>DEPENDENT_METHODS</type>
+            <order>BREADTH_FIRST</order>
+          </group>
+        </groups>
+      </arrangement>
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>
