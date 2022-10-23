@@ -1,9 +1,9 @@
 package com.huckleberrycalfinn.mvc;
 
 public class HeartBeatModelAdapter implements BeatModelInterface {
-  private HeartModel heartModel;
+  private HeartModelInterface heartModel;
 
-  public HeartBeatModelAdapter(HeartModel heartModel){
+  public HeartBeatModelAdapter(HeartModelInterface heartModel){
 	this.heartModel = heartModel;
   }
 

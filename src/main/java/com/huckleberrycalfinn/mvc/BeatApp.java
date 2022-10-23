@@ -17,10 +17,9 @@ public class BeatApp {
 //    }
 //    beatModel.setBPM(160);
     BeatController drumBeatController = new BeatController(new BeatModel());
-    BeatController heartBeatController = new BeatController(
-            new HeartBeatModelAdapter(
-                    new HeartModel()
-            )
-    );
+    BeatModelInterface heartModel = new HeartBeatModelAdapter(new HeartModel());
+
+    BeatControllerInterface heartBeatController = new BeatController(heartModel);
+    BeatControllerInterface heartBeatWithHeartController = new HeartController(heartModel);
   }
 }
