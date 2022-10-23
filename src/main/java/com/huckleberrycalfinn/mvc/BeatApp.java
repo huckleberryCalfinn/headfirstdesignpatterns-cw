@@ -16,6 +16,11 @@ public class BeatApp {
 //      ex.printStackTrace();
 //    }
 //    beatModel.setBPM(160);
-    BeatController beatController = new BeatController(new BeatModel());
+    BeatController drumBeatController = new BeatController(new BeatModel());
+    BeatController heartBeatController = new BeatController(
+            new HeartBeatModelAdapter(
+                    new HeartModel()
+            )
+    );
   }
 }
