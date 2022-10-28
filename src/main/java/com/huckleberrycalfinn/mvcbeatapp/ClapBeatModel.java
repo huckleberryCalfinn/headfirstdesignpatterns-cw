@@ -23,6 +23,7 @@ public class ClapBeatModel implements BeatModelInterface, Runnable{
     this.thread = new Thread(this);
   }
 
+  @Override
   public void initialize(){
     try {
       File clapFile = new File("clap.wav");
@@ -90,7 +91,7 @@ public class ClapBeatModel implements BeatModelInterface, Runnable{
   public void notifyBeatObservers() {
     Iterator<BeatObserver> beatIterator = this.beatObservers.iterator();
     while (beatIterator.hasNext()){
-      beatIterator.next().update();
+      beatIterator.next().updateBeat();
     }
   }
 
@@ -107,7 +108,7 @@ public class ClapBeatModel implements BeatModelInterface, Runnable{
   @Override
   public void notifyBPMObservers() {
     for (BPMObserver bpmObserver : this.bpmObservers){
-      bpmObserver.update();
+      bpmObserver.updateBPM();
     }
   }
 
