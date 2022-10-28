@@ -1,5 +1,5 @@
 package com.huckleberrycalfinn.mvcbeatapp;
 
-public interface BeatModelObserverInterface {
+public interface BPMObserver {
   void update();
 }

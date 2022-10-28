@@ -1,0 +1,5 @@
+package com.huckleberrycalfinn.mvcbeatapp;
+
+public interface BeatObserver {
+  void update();
+}
