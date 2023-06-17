@@ -183,8 +183,9 @@ class RemoteControl implements Invoker {
     Command noCommand = new NoCommand();
     this.undoCommand = noCommand;
     for ( int i = 0; i < 7; i++){
-      this.onCommands[i] = noCommand;
-      this.offCommands[i] = noCommand;
+//      this.onCommands[i] = noCommand;
+//      this.offCommands[i] = noCommand;
+      this.setCommand(i, noCommand, noCommand);
     }
   }
 
