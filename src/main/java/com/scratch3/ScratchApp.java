@@ -1,7 +1,8 @@
 package com.scratch3;
-import static com.scratch3.utils.IOHelpers.printKV;
-import org.immutables.value.Value;
 
+import static com.scratch3.utils.IOHelpers.printKV;
+
+import org.immutables.value.Value;
 import java.util.Map;
 import java.util.Properties;
 
@@ -84,7 +85,7 @@ class FunctionComposition<TFirst, RFirst extends TSecond, TSecond,  RSecond> imp
     }
 }
 
-interface FunctionCompositionInterface<TFirst, RFirst extends TSecond, TSecond, RSecond>{
+interface FunctionCompositionInterface<TFirst, RFirst extends TSecond, TSecond, RSecond> extends MyFunction<TFirst, RSecond> {
     MyFunction<TFirst, RFirst> getFirstFunc();
     MyFunction<TSecond, RSecond> getSecondFunc();
     RSecond apply(TFirst obj);
