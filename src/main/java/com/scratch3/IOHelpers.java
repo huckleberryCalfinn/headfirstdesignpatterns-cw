@@ -1,4 +1,4 @@
-package com.scratch3.utils;
+package com.scratch3;
 
 public class IOHelpers {
     public static void printKV(String key, Object value){

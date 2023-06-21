@@ -1,7 +1,9 @@
 package com.scratch3;
 
-import static com.scratch3.utils.IOHelpers.printKV;
+import static com.scratch3.IOHelpers.printKV;
 
+import com.google.common.collect.ImmutableClassToInstanceMap;
+import com.google.common.collect.ImmutableMap;
 import org.immutables.value.Value;
 import java.util.Map;
 import java.util.Properties;
@@ -12,14 +14,15 @@ public class ScratchApp {
         System.out.println(String.format("sysProps: \n\t%s", sysProps));
         Map<String,String> env = System.getenv();
         System.out.println(String.format("env: \n\t:%s", env));
-        Box<SystemPropertiesAndEnv> systemBox = ImmutableBox.<SystemPropertiesAndEnv>builder()
-            .obj(
-                ImmutableSystemPropertiesAndEnv.builder()
-                    .props(sysProps)
-                    .env(env)
-                    .build()
-            )
-            .build();
+        Box<SystemPropertiesAndEnv> systemBox = null;
+//            new ImmutableBox<SystemPropertiesAndEnv>()
+//            .obj(
+//                ImmutableBox< ImmutableMap.builder()
+//                    .props(sysProps)
+//                    .env(env)
+//                    .build()
+//            )
+//            .build();
         var boxCommand = new Command(new BoxSystemPropertiesGetter());
         var sysBoxProps = boxCommand.execute(systemBox);
         System.out.println(sysBoxProps);
