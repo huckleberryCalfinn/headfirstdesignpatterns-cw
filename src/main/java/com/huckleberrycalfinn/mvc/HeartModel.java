@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class HeartModel implements HeartModelInterface, Runnable{
+public class HeartModel implements HeartModelInterface, Runnable {
   private int time;
   private List<BeatObserver> beatObservers;
   private List<BPMUpdateObserver> bpmUpdateObservers;

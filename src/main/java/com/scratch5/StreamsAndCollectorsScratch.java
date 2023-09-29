@@ -2,12 +2,14 @@ package com.scratch5;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamsAndCollectorsScratch {
     public static void main(String[] args){
-        Person jed = new Person("jed bartlett", 50);
+        AtomicReference<Person> jedStore = new AtomicReference<>();
+        Person jed = new Person("jed", 50);
         Person abigail = new Person("abigail barltett", 52);
         Map<String, Person> parentNameToParentMap = List.of(jed, abigail).stream()
             .collect(Collectors.toMap(person -> person.getName(), Function.identity()));
@@ -24,11 +26,16 @@ public class StreamsAndCollectorsScratch {
             .collect(Collectors.groupingBy(person -> parentNameToParentMap.get(person.getGuardian().getName())));
         System.out.println(guardianToWards);
         guardianToWards.forEach((person, personList) -> {
+            if (person.getName().equals("jed")){
+                jedStore.set(person);
+                System.out.printf("updated jed store -> %s", jedStore);
+            }
            System.out.println(
                String.format("Guardian: %s", person));
            for (Person child : personList){
                System.out.println(String.format("\t%s", child.toString()));
            }
+           System.out.println(jedStore.get());
         });
     }
 }
